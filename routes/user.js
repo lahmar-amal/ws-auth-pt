@@ -21,4 +21,5 @@ router.post("/login", loginValidator(), validation, Login);
 router.get("/current", isAuth, (req, res) => {
     res.send({ message: "authorized", user: req.user });
 });
+//router.post("/addproduct", isAuth, AddProduct);
 module.exports = router;

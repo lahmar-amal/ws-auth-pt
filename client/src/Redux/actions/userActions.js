@@ -22,13 +22,14 @@ export const register = (user) => async (dispatch) => {
 };
 
 /// login
-export const login = (user) => async (dispatch) => {
+export const login = (user, history) => async (dispatch) => {
     dispatch({ type: LOAD_USER });
     try {
         let res = await axios.post(
             "http://localhost:7000/api/user/login",
             user
         );
+        history("/profile");
         dispatch({ type: LOGIN_USER, payload: res.data });
     } catch (error) {
         dispatch({ type: FAIL_USER, payload: error });
